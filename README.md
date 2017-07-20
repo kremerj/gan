@@ -1,5 +1,7 @@
 # 1D Generative Adversarial Network Example
 
+![Example output of the WGAN-GP optimization](animation.gif)
+
 Generates a GAN to approximate a 1D Gaussian using the
 improved [Wasserstein GAN (WGAN-GP)](https://arxiv.org/abs/1704.00028). Based on the codes from the
 repositories of [Ishaan Gulrajani](https://github.com/igul222/improved_wgan_training)
@@ -19,6 +21,4 @@ To run the code just run
 
     $ python main.py
 
-and it should produce output similar to this:
-
-![Example output of the WGAN-GP optimization](animation.gif)
+and it should produce output similar to the animation above.
