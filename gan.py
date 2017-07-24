@@ -105,10 +105,10 @@ class GAN(object):
                 # Create the gradient penalty operations.
                 epsilon = tf.random_uniform(shape=tf.shape(self.x), minval=0., maxval=1.)
                 interpolation = epsilon * self.x + (1 - epsilon) * self.G
-                penalty = (tf.norm(tf.gradients(D(interpolation), interpolation)) - 1) ** 2.0
+                penalty = (tf.norm(tf.gradients(D(interpolation), interpolation), axis=1) - 1) ** 2.0
 
             # Create the loss operations of the critic and generator.
-            self.loss_d = -tf.reduce_mean(self.D_real - self.D_fake) + self.lambda_reg * penalty
+            self.loss_d = tf.reduce_mean(self.D_fake - self.D_real + self.lambda_reg * penalty)
             self.loss_g = -tf.reduce_mean(self.D_fake)
 
             # Store the variables of the critic and the generator.
